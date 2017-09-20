@@ -41,3 +41,32 @@ This folder contains five iPython notebooks and two python codes.
 6. Train MNIST with autoencoder. An example of unsupervised learning. Reference: [Autoencoders and Sparsity](http://ufldl.stanford.edu/wiki/index.php/Autoencoders_and_Sparsity).
 
 Reference book: [Tensorflow 技术解析与实战](http://www.epubit.com.cn/book/details/4862).
+
+## Seq2Seq for Translation or Dialogue
+This is an implementation of Seq2Seq to make it easy to train the seq2seq model with any corpus for translation or dialogue tasks. The original codes are available here: [[suriyadeepan/easy_seq2seq]](https://github.com/suriyadeepan/easy_seq2seq). More details shown in the codes.
+
+If you using the provided sample dataset, here may happen a error called `unicode error`. Before training, you should solve it, and you can follow the suggestions of such issue: [[link]](https://github.com/suriyadeepan/easy_seq2seq/issues/31), or using the following command to convert all of the training/testing corpus to `utf-8` format.
+``` bash
+$ iconv -f WINDOWS-1252 -t UTF-8//TRANSLIT old_files -o new_ffiles
+```
+To train the model, Create temporary working directory prior to training
+``` bash
+$ mkdir working_dir
+```
+Then Download test/train data from Cornell Movie Dialog Corpus:
+``` bash
+$ cd data/
+$ ./pull_data.sh
+```
+Then training:
+``` bash
+# edit seq2seq.ini file to set 
+#       mode = train
+python seq2seq_main.py
+```
+or testing:
+``` bash
+# edit seq2seq.ini file to set 
+#       mode = test
+python seq2seq_main.py
+```
