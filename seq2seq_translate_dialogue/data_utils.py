@@ -1,7 +1,4 @@
 # coding=utf-8
-"""
-Utilities for downloading data from WMT, tokenizing, vocabularies.
-"""
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
@@ -9,9 +6,11 @@ from __future__ import print_function
 import os
 import re
 
-from six.moves import urllib
-
 from tensorflow.python.platform import gfile
+
+"""
+Utilities for downloading data from WMT, tokenizing, vocabularies.
+"""
 
 # Special vocabulary symbols - we always put them at the start.
 _PAD = b"_PAD"
@@ -62,7 +61,7 @@ def create_vocabulary(vocabulary_path, data_path, max_vocabulary_size, tokenizer
             vocab_list = _START_VOCAB + sorted(vocab, key=vocab.get, reverse=True)
             print('>> Full Vocabulary Size :', len(vocab_list))
             if len(vocab_list) > max_vocabulary_size:
-                vocab_list = vocab_list[:max_vocabulary_size]
+                vocab_list = vocab_list[:max_vocabulary_size]  # cut down rare words (words who rank after max_vocabulary_size)
             with gfile.GFile(vocabulary_path, mode="wb") as vocab_file:
                 for w in vocab_list:
                     vocab_file.write(w + b"\n")
