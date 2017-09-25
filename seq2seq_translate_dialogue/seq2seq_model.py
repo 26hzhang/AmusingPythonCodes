@@ -86,7 +86,7 @@ class Seq2SeqModel(object):
             self.decoder_inputs.append(tf.placeholder(tf.int32, shape=[None], name='decoder{0}'.format(i)))
             self.target_weights.append(tf.placeholder(tf.float32, shape=[None], name='weight{0}'.format(i)))
 
-        # the value of targets is one status skewing of the decoder (targets的值是解码器偏移一位)
+        # the value of targets is one status skewing of the decoder
         targets = [self.decoder_inputs[i + 1] for i in range(len(self.decoder_inputs) - 1)]
 
         # the output of training model
