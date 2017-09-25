@@ -37,7 +37,7 @@ class Seq2SeqModel(object):
         """
         self.source_vocab_size = source_vocab_size
         self.target_vocab_size = target_vocab_size
-        self.buckets = buckets
+        self.buckets = buckets  # (I,O), I: max length of input sentence, O: max length of output sentences
         self.batch_size = batch_size
         self.learning_rate = tf.Variable(float(learning_rate), trainable=False)
         self.learning_rate_decay_op = self.learning_rate.assign(self.learning_rate * learning_rate_dacay_factor)
@@ -55,6 +55,8 @@ class Seq2SeqModel(object):
 
             def sampled_loss(inputs, labels):
                 labels = tf.reshape(labels, [-1, 1])
+                # sampled_softmax_loss computes and returns the sampled softmax training loss
+                # url: https://www.tensorflow.org/api_docs/python/tf/nn/sampled_softmax_loss
                 return tf.nn.sampled_softmax_loss(w_t, b, inputs, labels, num_samples, self.target_vocab_size)
 
             softmax_loss_function = sampled_loss
@@ -91,6 +93,7 @@ class Seq2SeqModel(object):
 
         # the output of training model
         if forward_only:
+        	# url: https://www.tensorflow.org/api_docs/python/tf/contrib/legacy_seq2seq/model_with_buckets
             self.outputs, self.losses = tf.nn.seq2seq.model_with_buckets(self.encoder_inputs, self.decoder_inputs,
                                                                          targets, self.target_weights, buckets,
                                                                          lambda x, y: seq2seq_f(x, y, True),
