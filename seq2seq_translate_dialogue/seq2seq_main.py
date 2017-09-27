@@ -31,7 +31,7 @@ Dataset available here: https://github.com/suriyadeepan/datasets/tree/master/seq
 gConfig = {}
 
 
-def get_config(config_file='seq2seq.ini'):
+def get_config(config_file='seq2seq.ini'):  # load parameters and configurations from seq2seq.ini
     parser = SafeConfigParser()
     parser.read(config_file)
     # get the ints, floats and strings
@@ -61,7 +61,7 @@ def read_data(source_path, target_path, max_size=None):
             into the n-th bucket, i.e., such that len(source) < _buckets[n][0] and
             len(target) < _buckets[n][1]; source and target are lists of token-ids.
     """
-    data_set = [[] for _ in _buckets]
+    data_set = [[] for _ in _buckets]  # initialize the dataset according to the buckets size
     with tf.gfile.GFile(source_path, mode="r") as source_file:
         with tf.gfile.GFile(target_path, mode="r") as target_file:
             source, target = source_file.readline(), target_file.readline()
@@ -73,7 +73,8 @@ def read_data(source_path, target_path, max_size=None):
                     sys.stdout.flush()
                 source_ids = [int(x) for x in source.split()]
                 target_ids = [int(x) for x in target.split()]
-                target_ids.append(data_utils.EOS_ID)
+                target_ids.append(data_utils.EOS_ID)  # add end of sentence (EOS) token
+                # it means that if the source_ids' size large than source_size, this line will be dropped? similar for target_ids?
                 for bucket_id, (source_size, target_size) in enumerate(_buckets):
                     if len(source_ids) < source_size and len(target_ids) < target_size:
                         data_set[bucket_id].append([source_ids, target_ids])
@@ -90,16 +91,16 @@ def create_model(session, forward_only):
                                        gConfig['learning_rate_decay_factor'], forward_only=forward_only)
 
     if 'pretrained_model' in gConfig:
-        model.saver.restore(session, gConfig['pretrained_model'])
+        model.saver.restore(session, gConfig['pretrained_model'])  # if contains pretrained model, restore it
         return model
 
     ckpt = tf.train.get_checkpoint_state(gConfig['working_directory'])
-    if ckpt and ckpt.model_checkpoint_path:
+    if ckpt and ckpt.model_checkpoint_path:  # if trained model exists in model_checkpoint_path, restored it
         print("Reading model parameters from %s" % ckpt.model_checkpoint_path)
         model.saver.restore(session, ckpt.model_checkpoint_path)
     else:
         print("Created model with fresh parameters.")
-        session.run(tf.global_variables_initializer())
+        session.run(tf.global_variables_initializer())  # create a model with fresh parameters
     return model
 
 
