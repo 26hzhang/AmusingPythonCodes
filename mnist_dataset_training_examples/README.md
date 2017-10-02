@@ -8,5 +8,6 @@ This folder contains several iPython notebooks and pythong codes.
 5. Train MNIST dataset via RNN. A simple recurrent neural networks example to train MNIST dataset. Reference: [recurrent_network.py](https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/3_NeuralNetworks/recurrent_network.py), [Supervised Sequence Labelling with Recurrent Neural Networks](http://www.cs.toronto.edu/~graves/preprint.pdf).
 6. Train MNIST with autoencoder. An example of unsupervised learning. Reference: [Autoencoders and Sparsity](http://ufldl.stanford.edu/wiki/index.php/Autoencoders_and_Sparsity).
 7. Train MNIST to explore the effect of training epochs for losses in training dataset and in validation dataset. (Deep Learning Book P152 Figure)
+8. Tensorflow Maxout Example. Codes from: [Maxout Networks (Ian Goodfellow, Yoshua Bengio - 2013)](https://github.com/philipperemy/tensorflow-maxout)
 
 Reference book: [Tensorflow 技术解析与实战](http://www.epubit.com.cn/book/details/4862), [深度学习 (Deep Learning)](http://www.epubit.com.cn/book/details/4278).
