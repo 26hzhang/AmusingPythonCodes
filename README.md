@@ -1,4 +1,7 @@
 # Amusing Python Codes
+
+![Authour](https://img.shields.io/badge/Author-Zhang%20Hao%20(Isaac%20Changhau)-blue.svg)
+
 Interesting python codes to deal with some simple and practical tasks.
 
 - [**Basic Word2Vec Example**](/basic_word2vec_example)
