@@ -5,8 +5,9 @@ from nltk.corpus import stopwords
 class StanfordParser(object):
     """Stanford Parser for information extraction and phrase detection
     Start Stanford Server:
+        download stanford corenlp from: https://stanfordnlp.github.io/CoreNLP/download.html
         cd <Stanford CoreNLP folder>
-        java -Xmx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9000 -timeout 15000
+        nohup java -Xmx6g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9000 -timeout 15000 > nlplog.log 2>&1&
     """
     def __init__(self, properties=None):
         self.__properties = properties if properties is not None else \
