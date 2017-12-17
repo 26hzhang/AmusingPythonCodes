@@ -50,8 +50,7 @@ def maybe_download(filename, expected_bytes):
                     '. Can you get to it with a browser?')
   return local_filename
 
-
-filename = maybe_download('text8.zip', 31344016)
+filename = maybe_download('./data/text8.zip', 31344016)
 
 
 # Read the data into a list of strings.
