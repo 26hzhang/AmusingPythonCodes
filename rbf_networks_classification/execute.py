@@ -5,10 +5,10 @@ import scipy.io as scio
 import warnings
 warnings.filterwarnings('ignore')  # ignore all warnings
 
-'''
+"""
 This python file is the main function to execute the self-defined RBF network
 to train the model and do measurement
-'''
+"""
 
 def obtainData():
     # load training data

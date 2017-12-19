@@ -1,5 +1,5 @@
 import tensorflow as tf
-# import numpy as np
+import numpy as np
 import os
 from highway_full_connect.layers import dense_layer
 from highway_cnn.layers import conv2d_layer, conv2d_highway_layer
@@ -94,7 +94,7 @@ with tf.Graph().as_default(), tf.Session() as sess:
         summary_writer = tf.summary.FileWriter(summary_path, sess.graph_def)
         step = 0
         for epoch in range(epochs):
-            # train_cost = []
+            train_cost = []
             for batch_index in range(mnist.train.num_examples // batch_size):
                 step += 1
                 batch_imgs, batch_labels = mnist.train.next_batch(batch_size)
@@ -107,14 +107,14 @@ with tf.Graph().as_default(), tf.Session() as sess:
                     summary_writer.add_summary(summary, step)
                     saver.save(sess, checkpoint_path + 'checkpoint', global_step=step)
                     print('step %d, validating accuracy %g' % (step, validate_accuracy))
-                c = sess.run(optimizer, feed_dict={inputs: batch_imgs, targets: batch_labels, keep_prob1: 0.8,
-                                                   keep_prob2: 0.7, keep_prob3: 0.6, keep_prob4: 0.5})
-                # train_cost.append(c)
-            # print("Epoch: {}/{}".format(epoch + 1, epochs), "  |  Current loss: {:9.6f}".format(np.mean(train_cost)))
-            # print("Test accuracy %g" % sess.run(accuracy, feed_dict={inputs: mnist.test.images,
-            #                                                         targets: mnist.test.labels,
-            #                                                         keep_prob1: 1.0, keep_prob2: 1.0, keep_prob3: 1.0,
-            #                                                         keep_prob4: 1.0}))
+                c, _ = sess.run([cost, optimizer], feed_dict={inputs: batch_imgs, targets: batch_labels, keep_prob1: 0.8,
+                                                              keep_prob2: 0.7, keep_prob3: 0.6, keep_prob4: 0.5})
+                train_cost.append(c)
+            print("Epoch: {}/{}".format(epoch + 1, epochs), "  |  Current loss: {:9.6f}".format(np.mean(train_cost)))
+            print("Test accuracy %g" % sess.run(accuracy, feed_dict={inputs: mnist.test.images,
+                                                                     targets: mnist.test.labels,
+                                                                     keep_prob1: 1.0, keep_prob2: 1.0, keep_prob3: 1.0,
+                                                                     keep_prob4: 1.0}))
         summary_writer.close()
 
     # testing

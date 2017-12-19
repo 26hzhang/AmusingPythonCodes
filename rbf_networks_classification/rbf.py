@@ -3,19 +3,20 @@ from kmeans import KMeans
 import tensorflow as tf
 import numpy as np
 
-'''
+"""
 RBF Networks
-'''
+"""
 
 class RBFNet(object):
     def __init__(self, k=20, delta=0.1):
-        '''Params:
+        """
+        Params:
             _delta: rbf gaussian kernel
             _weights: weights from hidden layer to output layer
             _input_n: number of input size
             _hidden_num: number of hidden layer neurons
             _output_n: number of output sizes
-        '''
+        """
         self._delta = delta
         self._weights = None
         self._input_num = 0
@@ -25,7 +26,7 @@ class RBFNet(object):
 
 
     def setup(self, n_in, n_hidden, n_out):
-        '''build network'''
+        """build network"""
         self._input_num = n_in
         self._hidden_num = n_hidden
         self._output_num = n_out
@@ -37,7 +38,7 @@ class RBFNet(object):
 
 
     def fit(self, inputs, outputs):
-        '''fitting data'''
+        """fitting data"""
         self._inputs = inputs
         self._outputs = outputs
         self.setup(inputs.shape[1], self._hidden_num, outputs.shape[1])
@@ -46,7 +47,7 @@ class RBFNet(object):
 
 
     def training(self):
-        '''calculating weights through linear least square estimation and predicting'''
+        """calculating weights through linear least square estimation and predicting"""
         weights = tf.matrix_inverse(tf.matmul(tf.transpose(self.hidden_layer), 
                                               self.hidden_layer))
         weights_1 = tf.matmul(weights, tf.transpose(self.hidden_layer))
@@ -58,18 +59,18 @@ class RBFNet(object):
 
 
     def accuracy(self):
-        ''''calculating accruacy for training dataset'''
+        """calculating accruacy for training dataset"""
         accuracy = tf.reduce_mean(tf.cast(tf.equal(self.predictions, self._outputs), tf.float32))
         return self.sess.run(accuracy, feed_dict={self.input_layer: self._inputs, self.output_layer: self._outputs})
 
 
     def predict(self, inputs):
-        '''make predictions'''
+        """make predictions"""
         return self.sess.run(self.predictions, feed_dict={self.input_layer: inputs})
 
 
     def cal_centroid_vectors(self, inputs):
-        '''KMeans obtains centre vectors via unsupervised clustering based on Euclidean distance'''
+        """KMeans obtains centre vectors via unsupervised clustering based on Euclidean distance"""
         kmeans = KMeans(k=self._hidden_num, session=self.sess)
         kmeans.train(tf.constant(inputs))
         self.hidden_centers = kmeans.centers
@@ -78,7 +79,7 @@ class RBFNet(object):
 
 
     def rbfunction(self, x, c):
-    	'''RBF function: exp(-||x(k)-c||^2 / (2*delta^2)), since delta is a constant, so use _delta to represent (1 / (2*delta^2)) directly'''
+    	"""RBF function: exp(-||x(k)-c||^2 / (2*delta^2)), since delta is a constant, so use _delta to represent (1 / (2*delta^2)) directly"""
         e_c = tf.cast(tf.expand_dims(c, 0), tf.float32)
         e_x = tf.cast(tf.expand_dims(x, 1), tf.float32)
         return tf.exp(-self._delta * tf.sqrt(tf.reduce_sum(tf.square(tf.subtract(e_c, e_x)), 2)))

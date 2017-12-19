@@ -7,7 +7,7 @@ import warnings
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # hide messy TensorFlow warnings
 warnings.filterwarnings("ignore")  # hide messy warnings
 
-'''
+"""
 This script is for validation, which is used to compare the prediction results with RBF netowrks.
 
 In the script, I build a multi-layer perceptron neural network to train the given training dataset and make 
@@ -21,7 +21,7 @@ layer, I use 50 neurons, and for output layer, I convert the label -1 and 1 to o
 From hidden layer, I use ReLU as the activation function, while the output layer the Softmax is used, since 
 it is a classification task. The Stochastic Gradient Descent (SGD) is used as optmization algorithm, and the 
 training loss is computed by cross entropy.
-'''
+"""
 
 def one_hot_encode(x):
     one_hot = np.array([])
@@ -117,7 +117,8 @@ plt.plot(index, train_loss, c='r')
 plt.legend(['training loss'])
 plt.show()
 
-'''Output Sample: 500 epochs
+"""
+Output Sample: 500 epochs
 Epoch 0010 training cost= 0.394360939
 Epoch 0020 training cost= 0.308020954
 Epoch 0030 training cost= 0.266316092
@@ -131,9 +132,10 @@ Epoch 0490 training cost= 0.046003983
 Epoch 0500 training cost= 0.045227259
 Accuracy: 0.987879
 Predictions: [1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, 1, -1, 1]
-'''
+"""
 
-'''Output Sample: 2000 epochs
+"""
+Output Sample: 2000 epochs
 Epoch 0010 training cost= 0.447845647
 Epoch 0020 training cost= 0.326307867
 Epoch 0030 training cost= 0.266386668
@@ -147,4 +149,4 @@ Epoch 1990 training cost= 0.011961366
 Epoch 2000 training cost= 0.011883632
 Accuracy: 0.996970
 Predictions: [1, 1, 1, 1, 1, -1, 1, -1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, 1, -1, 1]
-'''
+"""
