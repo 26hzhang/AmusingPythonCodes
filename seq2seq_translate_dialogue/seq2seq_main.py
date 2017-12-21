@@ -12,7 +12,8 @@ import time
 import numpy as np
 import tensorflow as tf
 
-from seq2seq_translate_dialogue import data_utils, seq2seq_model
+import data_utils
+import seq2seq_model
 '''
 try:
     from ConfigParser import SafeConfigParser

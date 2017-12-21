@@ -7,7 +7,7 @@ import random
 import numpy as np
 import tensorflow as tf
 # from tensorflow.models.rnn.translate import data_utils
-from seq2seq_translate_dialogue import data_utils
+import data_utils
 
 """
 This tutorial refers: http://github.com/suriyadeepan/easy_seq2seq

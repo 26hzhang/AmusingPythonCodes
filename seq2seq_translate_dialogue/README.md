@@ -24,3 +24,5 @@ python seq2seq_main.py
 # edit seq2seq.ini file to set: mode = test
 python seq2seq_main.py
 ```
+
+**Test on Python3.6 + tensorflow==0.12.1**
