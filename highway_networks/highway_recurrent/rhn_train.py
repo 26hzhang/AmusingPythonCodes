@@ -13,14 +13,17 @@ import numpy as np
 import tensorflow as tf
 
 from sacred import Experiment
-from rhn import Model
-from data.reader import data_iterator
+from highway_networks.highway_recurrent.rhn import Model
+from highway_networks.highway_recurrent.data.reader import data_iterator
 
 ex = Experiment('rhn_prediction')
 logging = tf.logging
 
+
 class Config:
     pass
+
+
 C = Config()
 
 
@@ -147,10 +150,10 @@ def get_data(data_path, dataset):
         from tensorflow.models.rnn.ptb import reader
         raw_data = reader.ptb_raw_data(data_path)
     elif dataset == 'enwik8':
-        from data import reader
+        from highway_networks.highway_recurrent.data import reader
         raw_data = reader.enwik8_raw_data(data_path)
     elif dataset == 'text8':
-        from data import reader
+        from highway_networks.highway_recurrent.data import reader
         raw_data = reader.text8_raw_data(data_path)
     return reader, raw_data
 

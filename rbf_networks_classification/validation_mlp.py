@@ -23,6 +23,7 @@ it is a classification task. The Stochastic Gradient Descent (SGD) is used as op
 training loss is computed by cross entropy.
 """
 
+
 def one_hot_encode(x):
     one_hot = np.array([])
     for i in range(x.shape[0]):
@@ -100,15 +101,15 @@ with tf.Session() as sess:
             _, c = sess.run([optimizer, cost], feed_dict={x:batch_xs, y:batch_ys})
             avg_loss += c / total_batches
         if (epoch + 1) % 10 == 0:
-            print 'Epoch %04d' % (epoch + 1), 'training cost=', '{:.9f}'.format(avg_loss)
+            print('Epoch %04d' % (epoch + 1), 'training cost=', '{:.9f}'.format(avg_loss))
         train_loss.append(avg_loss)
     # compute accuracy
     acc = sess.run(accuracy, feed_dict={x:train_x, y:train_y})
-    print 'Accuracy:', '{:.6f}'.format(acc) 
+    print('Accuracy:', '{:.6f}'.format(acc) )
     # make predictions for test dataset
     preds = sess.run(pred, feed_dict={x:test_x})
     predicts = [-1 if preds[i][0] > preds[i][1] else 1 for i in range(len(preds))]
-    print 'Predictions:', predicts
+    print('Predictions:', predicts)
 
 train_loss = np.array(train_loss)
 index = np.arange(0, len(train_loss), 1)

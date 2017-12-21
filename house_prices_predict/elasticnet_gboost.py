@@ -4,9 +4,6 @@ from sklearn import ensemble, linear_model
 from sklearn.metrics import r2_score, mean_squared_error
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.utils import shuffle
-
-from ElasticNet.functions import train_test
-
 import warnings
 warnings.filterwarnings('ignore')
 

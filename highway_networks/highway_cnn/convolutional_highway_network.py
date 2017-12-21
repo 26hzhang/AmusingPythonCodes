@@ -1,8 +1,8 @@
 import tensorflow as tf
 import numpy as np
 import os
-from highway_full_connect.layers import dense_layer
-from highway_cnn.layers import conv2d_layer, conv2d_highway_layer
+from highway_networks.highway_full_connect.layers import dense_layer
+from highway_networks.highway_cnn.layers import conv2d_layer, conv2d_highway_layer
 from tensorflow.examples.tutorials.mnist import input_data
 
 

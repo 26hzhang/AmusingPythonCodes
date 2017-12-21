@@ -12,13 +12,14 @@ import time
 import numpy as np
 import tensorflow as tf
 
-import data_utils
-import seq2seq_model
-
+from seq2seq_translate_dialogue import data_utils, seq2seq_model
+'''
 try:
     from ConfigParser import SafeConfigParser
 except:
     from configparser import SafeConfigParser
+'''
+from configparser import SafeConfigParser
 
 '''
 This tutorial refers: http://github.com/suriyadeepan/easy_seq2seq

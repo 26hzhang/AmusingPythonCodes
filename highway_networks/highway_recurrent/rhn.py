@@ -233,5 +233,5 @@ def linear(args, output_size, bias, bias_start=None, scope=None):
             bias_term = vs.get_variable("Bias", [output_size], dtype=dtype)
         else:
             bias_term = vs.get_variable("Bias", [output_size], dtype=dtype,
-                                                                    initializer=tf.constant_initializer(bias_start, dtype=dtype))
+                                        initializer=tf.constant_initializer(bias_start, dtype=dtype))
     return res + bias_term

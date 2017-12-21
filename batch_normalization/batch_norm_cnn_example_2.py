@@ -2,8 +2,8 @@ import os
 import tensorflow as tf
 
 from tensorflow.examples.tutorials.mnist import input_data
-from nn_functions import multiclass_log_loss
-from cnn_model import batch_norm_cnn
+from batch_normalization.nn_functions import multiclass_log_loss
+from batch_normalization.cnn_model import batch_norm_cnn
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # suppress tensorflow warnings
 

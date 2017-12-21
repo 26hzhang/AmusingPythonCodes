@@ -1,7 +1,7 @@
 import tensorflow as tf
 from tensorflow.examples.tutorials.mnist import input_data
 import numpy as np
-from highway_full_connect.layers import dense_layer, highway_layer
+from highway_networks.highway_full_connect.layers import dense_layer, highway_layer
 import time
 
 
