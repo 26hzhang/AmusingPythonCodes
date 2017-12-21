@@ -1,10 +1,29 @@
 <component name="ProjectDictionaryState">
   <dictionary name="zhanghao">
     <words>
+      <w>autoencoder</w>
+      <w>backprop</w>
+      <w>bengio</w>
+      <w>getenv</w>
+      <w>goodfellow</w>
+      <w>hyperparamters</w>
+      <w>logdir</w>
+      <w>matplotlib</w>
+      <w>maxout</w>
       <w>minibatch</w>
+      <w>nonlinearize</w>
       <w>occurences</w>
+      <w>preactivate</w>
+      <w>protos</w>
       <w>pylint</w>
+      <w>regressor</w>
+      <w>relu</w>
       <w>statinfo</w>
+      <w>tensorboard</w>
+      <w>tmpdir</w>
+      <w>unparsed</w>
+      <w>waitforbuttonpress</w>
+      <w>yoshua</w>
     </words>
   </dictionary>
 </component>
