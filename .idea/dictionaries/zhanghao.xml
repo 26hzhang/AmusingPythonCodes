@@ -18,6 +18,7 @@
       <w>pylint</w>
       <w>regressor</w>
       <w>relu</w>
+      <w>rgbym</w>
       <w>statinfo</w>
       <w>tensorboard</w>
       <w>tmpdir</w>
