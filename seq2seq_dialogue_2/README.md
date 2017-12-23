@@ -8,7 +8,7 @@ Details about the codes: [Suriyadeepan Ram -- Practical seq2seq](http://suriyade
 
 In the original repository, the author trained the seq2seq model on several datasets and showed the results.
 
-**Codes structures and some trivial stuff are changed**
+**Codes structures are changed and some codes are modified to fit tensorflow-1.0.0 (original is 0.12.0)**
 
 The dataset used:
 
@@ -20,4 +20,4 @@ Since the (2) and (3) are similar tasks, so here I only studied the first two an
 
 The training dataset (after preprocessed) and checkpoint data are available on the original repository. Or using the shell file (pull) to download them.
 
-For training, test on **Python3.6 + Tensorflow v1.0.0**
+For training process is test on **Python3.6 + Tensorflow v1.0.0**

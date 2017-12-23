@@ -26,15 +26,9 @@ class Seq2Seq(object):
         # Basic LSTM cell wrapped in Dropout Wrapper
         self.keep_prob = tf.placeholder(tf.float32)
         # define the basic cell
-        # basic_cell = tf.contrib.rnn.core_rnn_cell.DropoutWrapper(
-        #        tf.contrib.rnn.core_rnn_cell.BasicLSTMCell(emb_dim, state_is_tuple=True),
-        #        output_keep_prob=self.keep_prob)
-        # change to fit tf-1.0.0
         basic_cell = tf.contrib.rnn.DropoutWrapper(tf.contrib.rnn.BasicLSTMCell(emb_dim, state_is_tuple=True),
                                                    output_keep_prob=self.keep_prob)
         # stack cells together : n layered model
-        # stacked_lstm = tf.contrib.rnn.core_rnn_cell.MultiRNNCell([basic_cell]*num_layers, state_is_tuple=True)
-        # change to fit tf-1.0.0
         stacked_lstm = tf.contrib.rnn.MultiRNNCell([basic_cell] * num_layers, state_is_tuple=True)
         # for parameter sharing between training model and testing model
         with tf.variable_scope('decoder') as scope:
