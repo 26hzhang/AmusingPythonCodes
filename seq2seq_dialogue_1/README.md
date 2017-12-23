@@ -1,4 +1,4 @@
-## Seq2Seq for Translation or Dialogue
+## Seq2Seq for Translation or Dialogue (1)
 This is an implementation of Seq2Seq to make it easy to train the seq2seq model with any corpus for translation or dialogue task.
 
 The original codes are available here: [[suriyadeepan/easy_seq2seq]](https://github.com/suriyadeepan/easy_seq2seq). 
