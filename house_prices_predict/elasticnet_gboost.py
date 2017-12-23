@@ -149,5 +149,3 @@ print('\nPredictions:')
 print(output)
 # Saving to CSV
 # output.to_csv('submission.csv', index=False)
-
-

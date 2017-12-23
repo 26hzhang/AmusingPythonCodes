@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/AmusingPythonCodes.iml" filepath="$PROJECT_DIR$/.idea/AmusingPythonCodes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/batch_normalization.iml" filepath="$PROJECT_DIR$/.idea/batch_normalization.iml" />
     </modules>
   </component>
 </project>

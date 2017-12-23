@@ -1,6 +1,6 @@
 # encoding: utf-8
-from stanford_corenlp_demo.stanford_corenlp import StanfordParser
-from stanford_corenlp_demo.common import read_nth_data
+from stanford_corenlp import StanfordParser
+from common import read_nth_data
 from pprint import pprint
 
 text, _ = read_nth_data('./data/train-data.xml', 6)

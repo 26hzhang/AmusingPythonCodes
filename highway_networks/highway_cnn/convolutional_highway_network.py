@@ -1,8 +1,8 @@
 import tensorflow as tf
 import numpy as np
 import os
-from highway_networks.highway_full_connect.layers import dense_layer
-from highway_networks.highway_cnn.layers import conv2d_layer, conv2d_highway_layer
+from highway_full_connect.layers import dense_layer
+from highway_cnn.layers import conv2d_layer, conv2d_highway_layer
 from tensorflow.examples.tutorials.mnist import input_data
 
 
@@ -107,8 +107,9 @@ with tf.Graph().as_default(), tf.Session() as sess:
                     summary_writer.add_summary(summary, step)
                     saver.save(sess, checkpoint_path + 'checkpoint', global_step=step)
                     print('step %d, validating accuracy %g' % (step, validate_accuracy))
-                c, _ = sess.run([cost, optimizer], feed_dict={inputs: batch_imgs, targets: batch_labels, keep_prob1: 0.8,
-                                                              keep_prob2: 0.7, keep_prob3: 0.6, keep_prob4: 0.5})
+                c, _ = sess.run([cost, optimizer], feed_dict={inputs: batch_imgs, targets: batch_labels,
+                                                              keep_prob1: 0.8, keep_prob2: 0.7, keep_prob3: 0.6,
+                                                              keep_prob4: 0.5})
                 train_cost.append(c)
             print("Epoch: {}/{}".format(epoch + 1, epochs), "  |  Current loss: {:9.6f}".format(np.mean(train_cost)))
             print("Test accuracy %g" % sess.run(accuracy, feed_dict={inputs: mnist.test.images,

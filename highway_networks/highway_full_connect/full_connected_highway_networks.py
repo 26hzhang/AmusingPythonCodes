@@ -1,7 +1,7 @@
 import tensorflow as tf
 from tensorflow.examples.tutorials.mnist import input_data
 import numpy as np
-from highway_networks.highway_full_connect.layers import dense_layer, highway_layer
+from highway_full_connect.layers import dense_layer, highway_layer
 import time
 
 
@@ -64,4 +64,3 @@ with tf.Session() as sess:
     # Validation
     print("Validation Accuracy: ", sess.run(accuracy, feed_dict={inputs: mnist.validation.images,
                                                                  targets: mnist.validation.labels}))
-

@@ -1,6 +1,6 @@
 import tensorflow as tf
-from batch_normalization.nn_layers import Conv2dLayer, MaxPooling2dLayer, DenseLayer, SoftmaxLayer
-from batch_normalization.nn_functions import batch_normalization
+from nn_layers import Conv2dLayer, MaxPooling2dLayer, DenseLayer, SoftmaxLayer
+from nn_functions import batch_normalization
 
 
 def batch_norm_cnn(x, y_, keep_prob, phase_train):

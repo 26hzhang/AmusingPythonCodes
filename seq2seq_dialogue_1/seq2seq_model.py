@@ -74,13 +74,17 @@ class Seq2SeqModel(object):
 
         # Attention model
         def seq2seq_f(encoder_inputs, decoder_inputs, do_decode):
-            '''url: https://www.tensorflow.org/api_docs/python/tf/contrib/legacy_seq2seq/embedding_attention_seq2seq
+            """url: https://www.tensorflow.org/api_docs/python/tf/contrib/legacy_seq2seq/embedding_attention_seq2seq
                url: https://www.tensorflow.org/tutorials/recurrent
-            This model first embeds encoder_inputs by a newly created embedding (of shape [num_encoder_symbols x input_size]). 
-            Then it runs an RNN to encode embedded encoder_inputs into a state vector. It keeps the outputs of this RNN at every step to use for attention later. 
-            Next, it embeds decoder_inputs by another newly created embedding (of shape [num_decoder_symbols x input_size]). 
-            Then it runs attention decoder, initialized with the last encoder state, on embedded decoder_inputs and attending to encoder outputs.
-            Parameters: 
+            This model first embeds encoder_inputs by a newly created embedding (of shape
+                [num_encoder_symbols x input_size]).
+            Then it runs an RNN to encode embedded encoder_inputs into a state vector. It keeps the outputs of this RNN
+                at every step to use for attention later.
+            Next, it embeds decoder_inputs by another newly created embedding (of shape
+                [num_decoder_symbols x input_size]).
+            Then it runs attention decoder, initialized with the last encoder state, on embedded decoder_inputs and
+                attending to encoder outputs.
+            Params:
                 encoder_inputs: A list of 1D int32 Tensors of shape [batch_size].
                 decoder_inputs: A list of 1D int32 Tensors of shape [batch_size].
                 cell: tf.nn.rnn_cell.RNNCell defining the cell function and size.
@@ -88,14 +92,24 @@ class Seq2SeqModel(object):
                 num_decoder_symbols: Integer; number of symbols on the decoder side.
                 embedding_size: Integer, the length of the embedding vector for each symbol.
                 num_heads: Number of attention heads that read from attention_states.
-                output_projection: None or a pair (W, B) of output projection weights and biases; W has shape [output_size x num_decoder_symbols] and B has shape [num_decoder_symbols]; if provided and feed_previous=True, each fed previous output will first be multiplied by W and added B.
-                feed_previous: Boolean or scalar Boolean Tensor; if True, only the first of decoder_inputs will be used (the "GO" symbol), and all other decoder inputs will be taken from previous outputs (as in embedding_rnn_decoder). If False, decoder_inputs are used as given (the standard decoder case).
+                output_projection: None or a pair (W, B) of output projection weights and biases; W has shape
+                         [output_size x num_decoder_symbols] and B has shape [num_decoder_symbols]; if provided and
+                         feed_previous=True, each fed previous output will first be multiplied by W and added B.
+                feed_previous: Boolean or scalar Boolean Tensor; if True, only the first of decoder_inputs will be used
+                         (the "GO" symbol), and all other decoder inputs will be taken from previous outputs (as in
+                         embedding_rnn_decoder). If False, decoder_inputs are used as given (the standard decoder case).
                 dtype: The dtype of the initial RNN state (default: tf.float32).
                 scope: VariableScope for the created subgraph; defaults to "embedding_attention_seq2seq".
-                initial_state_attention: If False (default), initial attentions are zero. If True, initialize the attentions from the initial state and attention states.
+                initial_state_attention: If False (default), initial attentions are zero. If True, initialize the
+                         attentions from the initial state and attention states.
             Returns:
-                A tuple of the form (outputs, state), where: outputs: A list of the same length as decoder_inputs of 2D Tensors with shape [batch_size x num_decoder_symbols] containing the generated outputs. state: The state of each decoder cell at the final time-step. It is a 2D Tensor of shape [batch_size x cell.state_size].
-            '''
+                A tuple of the form (outputs, state), where: outputs: A list of the same length as decoder_inputs of 2D
+                         Tensors with shape [batch_size x num_decoder_symbols] containing the generated outputs.
+                         state: The state of each decoder cell at the final time-step. It is a 2D Tensor of shape
+                         [batch_size x cell.state_size].
+            """
+            # if do_decode == True, only the first of decoder_inputs will be used (the "GO" symbol), otherwise, decoder_
+            # inputs are used, thus, for training, set do_decode as False, for testing, set as True
             return tf.nn.seq2seq.embedding_attention_seq2seq(encoder_inputs,
                                                              decoder_inputs,
                                                              cell,  # RNN cell
@@ -103,7 +117,7 @@ class Seq2SeqModel(object):
                                                              num_decoder_symbols=target_vocab_size,
                                                              embedding_size=size,
                                                              output_projection=output_projection,
-                                                             feed_previous=do_decode)  # if True, only the first of decoder_inputs will be used (the "GO" symbol), otherwise, decoder_inputs are used, thus, for training, set do_decode as False, for testing, set as True
+                                                             feed_previous=do_decode)
 
         # feed data for model
         self.encoder_inputs = []
@@ -121,7 +135,8 @@ class Seq2SeqModel(object):
         # the output of training model
         if forward_only:  # testing
             '''url: https://www.tensorflow.org/api_docs/python/tf/contrib/legacy_seq2seq/model_with_buckets
-            Create a sequence-to-sequence model with support for bucketing. The seq2seq argument is a function that defines a sequence-to-sequence model,
+            Create a sequence-to-sequence model with support for bucketing. The seq2seq argument is a function that 
+            defines a sequence-to-sequence model,
                 e.g., seq2seq = lambda x, y: basic_rnn_seq2seq( x, y, rnn_cell.GRUCell(24))
             Arguments:
                 encoder_inputs: A list of Tensors to feed the encoder; first seq2seq input.
@@ -129,21 +144,30 @@ class Seq2SeqModel(object):
                 targets: A list of 1D batch-sized int32 Tensors (desired output sequence).
                 weights: List of 1D batch-sized float-Tensors to weight the targets.
                 buckets: A list of pairs of (input size, output size) for each bucket.
-                seq2seq: A sequence-to-sequence model function; it takes 2 input that agree with encoder_inputs and decoder_inputs, and returns a pair consisting of outputs and states (as, e.g., basic_rnn_seq2seq).
-                softmax_loss_function: Function (labels, logits) -> loss-batch to be used instead of the standard softmax (the default if this is None). Note that to avoid confusion, it is required for the function to accept named arguments.
-                per_example_loss: Boolean. If set, the returned loss will be a batch-sized tensor of losses for each sequence in the batch. If unset, it will be a scalar with the averaged loss from all examples.
+                seq2seq: A sequence-to-sequence model function; it takes 2 input that agree with encoder_inputs and 
+                         decoder_inputs, and returns a pair consisting of outputs and states (e.g., basic_rnn_seq2seq).
+                softmax_loss_function: Function (labels, logits) -> loss-batch to be used instead of the standard 
+                         softmax (the default if this is None). Note that to avoid confusion, it is required for the 
+                         function to accept named arguments.
+                per_example_loss: Boolean. If set, the returned loss will be a batch-sized tensor of losses for each 
+                         sequence in the batch. If unset, it will be a scalar with the averaged loss from all examples.
                 name: Optional name for this operation, defaults to "model_with_buckets".
             Returns:
                 A tuple of the form (outputs, losses)
-                outputs: The outputs for each bucket, its j'th element consist of a list of 2D Tensors. The shape of output tensors can be either [batch_size x output_size] or [batch_size x num_decoder_symbols] depending on the seq2seq model used. In our model its output tensors is [batch_size x num_decoder_symbols].
-                losses: list of scalar Tensors, representing losses for each bucket, or, if per_example_loss is set, a list of 1D batch_sized float Tensors.
+                outputs: The outputs for each bucket, its j'th element consist of a list of 2D Tensors. The shape of 
+                         output tensors can be either [batch_size x output_size] or [batch_size x num_decoder_symbols] 
+                         depending on the seq2seq model used. In our model its output tensors is 
+                         [batch_size x num_decoder_symbols].
+                losses: list of scalar Tensors, representing losses for each bucket, or, if per_example_loss is set, a 
+                         list of 1D batch_sized float Tensors.
             '''
             self.outputs, self.losses = tf.nn.seq2seq.model_with_buckets(self.encoder_inputs,
                                                                          self.decoder_inputs,
                                                                          targets,
                                                                          self.target_weights,
                                                                          buckets,
-                                                                         lambda x, y: seq2seq_f(x, y, True),  # seq2seq model
+                                                                         # seq2seq model
+                                                                         lambda x, y: seq2seq_f(x, y, True),
                                                                          softmax_loss_function=softmax_loss_function)
             if output_projection is not None:  # apply output projection
                 for b in range(len(buckets)):
@@ -202,7 +226,7 @@ class Seq2SeqModel(object):
                                                                                                decoder_size))
         if len(target_weights) != decoder_size:
             raise ValueError('Weight length must be equal to the one in bucket, %d != %d.' % (len(target_weights),
-                                                                                             decoder_size))
+                                                                                              decoder_size))
 
         # feed inputs
         input_feed = {}  # feed_dict: encoder_inputs, decoder_inputs, targets
@@ -262,11 +286,13 @@ class Seq2SeqModel(object):
         batch_encoder_inputs, batch_decoder_inputs, batch_weights = [], [], []
         # Batch encoder inputs are just re-indexed encoder_inputs.
         for length_idx in range(encoder_size):
-            batch_encoder_inputs.append(np.array([encoder_inputs[batch_idx][length_idx] for batch_idx in range(self.batch_size)], dtype=np.int32))
+            batch_encoder_inputs.append(np.array([encoder_inputs[batch_idx][length_idx]
+                                                  for batch_idx in range(self.batch_size)], dtype=np.int32))
 
         # Batch decoder inputs are re-indexed decoder_inputs, we create weights.
         for length_idx in range(decoder_size):
-            batch_decoder_inputs.append(np.array([decoder_inputs[batch_idx][length_idx] for batch_idx in range(self.batch_size)], dtype=np.int32))
+            batch_decoder_inputs.append(np.array([decoder_inputs[batch_idx][length_idx]
+                                                  for batch_idx in range(self.batch_size)], dtype=np.int32))
             # Create target_weights to be 0 for targets that are padding.
             batch_weight = np.ones(self.batch_size, dtype=np.float32)
             for batch_idx in range(self.batch_size):

@@ -45,6 +45,3 @@ def extract_conceptnet(phrase):
         weight = edge['weight']  # weight
         concepts.append({'Triple': triple, 'weight': weight, 'example': surface_text})
     return concepts
-
-
-

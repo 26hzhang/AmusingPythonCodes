@@ -10,7 +10,7 @@ Interesting python codes to deal with some simple and practical tasks.
 - [**Highway Networks Example**](/highway_networks)
 - [**House Prices Predict**](/house_prices_predict)
 - [**MNIST Dataset Training Examples**](/mnist_training_examples)
-- [**Seq2Seq for Translation or Dialogue**](/seq2seq_translate_dialogue)
+- [**Seq2Seq for Translation or Dialogue (1)**](/seq2seq_dialogue_1)
 - [**Simple RBF Neural Networks for Two-class Classification Example**](/rbf_networks_classification)
 - [**Stanford CoreNLP Demo**](/stanford_corenlp_demo)
 - [**Stock Prices Predict**](/stock_prices_predict)

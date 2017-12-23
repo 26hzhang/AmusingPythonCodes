@@ -29,14 +29,14 @@ def main():
     rbf.fit(train_data, train_label)
     # obtain the weights after training
     weights = rbf._weights
-    print'Weights:', np.array(weights).T[0]  # reshape and format
+    print('Weights:', np.array(weights).T[0])  # reshape and format
     # obtain accuracy of training dataset
     accuracy = rbf.accuracy()
-    print 'Accuracy:', accuracy
+    print('Accuracy:', accuracy)
     # make a prediction
     predicts = rbf.predict(test_data)
     # reshape and format
-    print 'Predictions:', np.array(predicts, dtype=np.int32).T[0]
+    print('Predictions:', np.array(predicts, dtype=np.int32).T[0])
 
 
 if __name__ == "__main__":

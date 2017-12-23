@@ -1,5 +1,5 @@
 import tensorflow as tf
-from highway_networks.highway_full_connect.layers import init_weight, init_bias
+from highway_full_connect.layers import init_weight, init_bias
 
 
 def conv2d_layer(x, w_shape, b_shape, strides, padding):

@@ -13,8 +13,8 @@ import numpy as np
 import tensorflow as tf
 
 from sacred import Experiment
-from highway_networks.highway_recurrent.rhn import Model
-from highway_networks.highway_recurrent.data.reader import data_iterator
+from highway_recurrent.rhn import Model
+from highway_recurrent.data.reader import data_iterator
 
 ex = Experiment('rhn_prediction')
 logging = tf.logging
@@ -34,7 +34,7 @@ def hyperparameters():
     init_scale = 0.04
     init_bias = -2.0
     num_layers = 1
-    depth = 4    #    the recurrence depth
+    depth = 4    # the recurrence depth
     learning_rate = 0.2
     lr_decay = 1.02
     weight_decay = 1e-7
@@ -150,10 +150,10 @@ def get_data(data_path, dataset):
         from tensorflow.models.rnn.ptb import reader
         raw_data = reader.ptb_raw_data(data_path)
     elif dataset == 'enwik8':
-        from highway_networks.highway_recurrent.data import reader
+        from highway_recurrent.data import reader
         raw_data = reader.enwik8_raw_data(data_path)
     elif dataset == 'text8':
-        from highway_networks.highway_recurrent.data import reader
+        from highway_recurrent.data import reader
         raw_data = reader.text8_raw_data(data_path)
     return reader, raw_data
 
@@ -172,7 +172,8 @@ def get_noise(x, m, drop_x, drop_i, drop_h, drop_o):
         noise_x = np.ones((m.batch_size, m.num_steps, 1), dtype=np.float32)
 
     if keep_i < 1.0:
-        noise_i = (np.random.random_sample((m.batch_size, m.in_size, m.num_layers)) < keep_i).astype(np.float32) / keep_i
+        noise_i = (np.random.random_sample((m.batch_size, m.in_size, m.num_layers)) < keep_i).astype(np.float32) / \
+                  keep_i
     else:
         noise_i = np.ones((m.batch_size, m.in_size, m.num_layers), dtype=np.float32)
     if keep_h < 1.0:
@@ -204,7 +205,7 @@ def run_epoch(session, m, data, eval_op, config, verbose=False):
 
         if verbose and step % (epoch_size // 10) == 10:
             print("%.3f perplexity: %.3f speed: %.0f wps" % (step * 1.0 / epoch_size, np.exp(costs / iters),
-                                                                                                             iters * m.batch_size / (time.time() - start_time)))
+                                                             iters * m.batch_size / (time.time() - start_time)))
 
     return np.exp(costs / iters)
 
@@ -269,9 +270,10 @@ def run_mc_epoch(seed, session, m, data, eval_op, config, mc_steps, verbose=Fals
 
         for step, (x, y) in enumerate(data_iterator(data, m.batch_size, m.num_steps)):
             if step == 0:
-                noise_x, noise_i, noise_h, noise_o = get_noise(x, m, config.drop_x, config.drop_i, config.drop_h, config.drop_o)
-            feed_dict = {m.input_data: x, m.targets: y,
-                                     m.noise_x: noise_x, m.noise_i: noise_i, m.noise_h: noise_h, m.noise_o: noise_o}
+                noise_x, noise_i, noise_h, noise_o = get_noise(x, m, config.drop_x, config.drop_i, config.drop_h,
+                                                               config.drop_o)
+            feed_dict = {m.input_data: x, m.targets: y, m.noise_x: noise_x, m.noise_i: noise_i, m.noise_h: noise_h,
+                         m.noise_o: noise_o}
             feed_dict.update({m.initial_state[i]: state[i] for i in range(m.num_layers)})
             cost, state, _ = session.run([m.cost, m.final_state, eval_op], feed_dict)
             costs += cost
@@ -279,7 +281,7 @@ def run_mc_epoch(seed, session, m, data, eval_op, config, mc_steps, verbose=Fals
             all_probs[step] = np.exp(-cost)
             if verbose and step % (epoch_size // 10) == 10:
                 print("%.3f perplexity: %.3f speed: %.0f wps" % (step * 1.0 / epoch_size, np.exp(costs / iters),
-                                                                                                                 iters * m.batch_size / (time.time() - start_time)))
+                                                                 iters * m.batch_size / (time.time() - start_time)))
         perplexity = np.exp(costs / iters)
         print("Perplexity:", perplexity)
         if perplexity < 500:
@@ -354,15 +356,16 @@ def main(data_path, dataset, seed, _run):
             mtrain.assign_lr(session, config.learning_rate / lr_decay)
 
             print("Epoch: %d Learning rate: %.3f" % (i + 1, session.run(mtrain.lr)))
-            train_perplexity = run_epoch(session, mtrain, train_data, mtrain.train_op, config=config,
-                                                                     verbose=True)
+            train_perplexity = run_epoch(session, mtrain, train_data, mtrain.train_op, config=config, verbose=True)
             print("Epoch: %d Train Perplexity: %.3f, Bits: %.3f" % (i + 1, train_perplexity, np.log2(train_perplexity)))
 
             valid_perplexity = run_epoch(session, mvalid, valid_data, tf.no_op(), config=val_config)
-            print("Epoch: %d Valid Perplexity (batched): %.3f, Bits: %.3f" % (i + 1, valid_perplexity, np.log2(valid_perplexity)))
+            print("Epoch: %d Valid Perplexity (batched): %.3f, Bits: %.3f" % (i + 1, valid_perplexity,
+                                                                              np.log2(valid_perplexity)))
 
             test_perplexity = run_epoch(session, mvalid, test_data, tf.no_op(), config=val_config)
-            print("Epoch: %d Test Perplexity (batched): %.3f, Bits: %.3f" % (i + 1, test_perplexity, np.log2(test_perplexity)))
+            print("Epoch: %d Test Perplexity (batched): %.3f, Bits: %.3f" % (i + 1, test_perplexity,
+                                                                             np.log2(test_perplexity)))
 
             trains.append(train_perplexity)
             vals.append(valid_perplexity)
@@ -377,7 +380,6 @@ def main(data_path, dataset, seed, _run):
             _run.info['epoch_nr'] = i + 1
             _run.info['nr_parameters'] = mtrain.nvars.item()
             _run.info['logs'] = {'train_perplexity': trains, 'valid_perplexity': vals, 'test_perplexity': tests}
-
 
         print("Training is over.")
         best_val_epoch = np.argmin(vals)

@@ -2,7 +2,7 @@ import math
 import numpy as np
 import tensorflow as tf
 import os
-from basic_word2vec_example.data_utils import maybe_download, read_data, build_dataset, tsne_and_plot, generate_batch
+from data_utils import maybe_download, read_data, build_dataset, tsne_and_plot, generate_batch
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # suppress tensorflow warnings
 
