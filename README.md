@@ -6,6 +6,7 @@ Interesting python codes to deal with some simple and practical tasks.
 
 - [**Basic Word2Vec Example**](/basic_word2vec_example)
 - [**Batch Normalization Example**](/batch_normalization)
+- [**Build Recurrent Neural Networks from Scratch**](/rnn_from_scratch)
 - [**Douban · Wolf Warrior II Film Comments Analysis**](/wolf_warriors_ii)
 - [**Highway Networks Example**](/highway_networks)
 - [**House Prices Predict**](/house_prices_predict)
