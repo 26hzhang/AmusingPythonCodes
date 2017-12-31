@@ -1,0 +1,2 @@
+model_checkpoint_path: "gan_model-100000"
+all_model_checkpoint_paths: "gan_model-100000"

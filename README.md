@@ -8,6 +8,7 @@ Interesting python codes to deal with some simple and practical tasks.
 - [**Batch Normalization Example**](/batch_normalization)
 - [**Build Recurrent Neural Networks from Scratch**](/rnn_from_scratch)
 - [**Douban · Wolf Warrior II Film Comments Analysis**](/wolf_warriors_ii)
+- [**Generative Adversarial Networks Example**](/generative_adversarial_nets)
 - [**Highway Networks Example**](/highway_networks)
 - [**House Prices Predict**](/house_prices_predict)
 - [**MNIST Dataset Training Examples**](/mnist_training_examples)
