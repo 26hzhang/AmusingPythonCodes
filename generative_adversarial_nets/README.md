@@ -3,24 +3,24 @@
 The original codes are derived from [aymericdamien/TensorFlow-Examples](https://github.com/aymericdamien/TensorFlow-Examples), modifications and adjustments of the codes are made for easily understandable and more flexible.
 
 ### Generative Adversarial Network (GAN) Overview
-![gan_model](/assets/gan_model.png)
+![gan_model](assets/gan_model.png)
 
 [aymericdamien/TensorFlow-Examples/notebooks/3_NeuralNetworks/gan.ipynb](https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/3_NeuralNetworks/gan.ipynb)
 
 ### Deep Convolutional Generative Adversarial Network (DCGAN) Overview
-![dcgan_model](/assets/dcgan_model.png)
+![dcgan_model](assets/dcgan_model.png)
 
 [aymericdamien/TensorFlow-Examples/notebooks/3_NeuralNetworks/dcgan.ipynb](https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/3_NeuralNetworks/dcgan.ipynb)
 
 ### Results
 **GAN Generated Results**:
-![gan](/assets/gan.png)
+![gan](assets/gan.png)
 
 **DCGAN Generated Results**:
-![dcgan](/assets/dcgan.png)
+![dcgan](assets/dcgan.png)
 
 **DCGAN with Batch Normalization Generated Results**:
-![dcgan_batch](/assets/dcgan_batch.png)
+![dcgan_batch](assets/dcgan_batch.png)
 
 **Note**: The trained models of _GAN_, _DCGAN_ as well as _DCGAN with Batch Normalization_ are available at the `data/ckpt` directory.
 
