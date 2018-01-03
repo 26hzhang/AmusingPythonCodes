@@ -1,4 +1,6 @@
 ## House Prices Predict
+![](https://img.shields.io/badge/Python-3.6.1-brightgreen.svg) ![](https://img.shields.io/badge/sklearn-0.18.2-yellowgreen.svg) ![](https://img.shields.io/badge/xgboost-0.6-yellowgreen.svg)
+
 It's a [Kaggle](https://www.kaggle.com/) competition · [House Prices: Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques). 
 
 Here are some useful references: 

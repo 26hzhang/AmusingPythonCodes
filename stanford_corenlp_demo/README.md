@@ -1,4 +1,5 @@
 # Stanford CoreNLP Demo
+![](https://img.shields.io/badge/Python-3.6.1-brightgreen.svg) ![](https://img.shields.io/badge/StanfordCoreNLP-3.8.0-yellowgreen.svg)
 
 It is a demo to use Python wrapper ([pycorenlp](https://github.com/smilli/py-corenlp)) for Stanford CoreNLP to process the result from Stanford CoreNLP server.
 

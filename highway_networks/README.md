@@ -1,4 +1,6 @@
 # Highway Networks
+![](https://img.shields.io/badge/Python-3.6.1-brightgreen.svg) ![](https://img.shields.io/badge/Tensorflow-1.0.0-yellowgreen.svg)
+
 Implementation of highway networks in Tensorflow, highway networks is a method to construct networks with very deep (hundreds+) layers. Although it performs well in practice, its principle is quite east to understand. 
 
 In this repository, most codes are inspired and borrowed from [lucko515/fully-connected-highway-network](https://github.com/lucko515/fully-connected-highway-network) and [fomorians/highway-cnn](https://github.com/fomorians/highway-cnn) (some modifications and restructured).

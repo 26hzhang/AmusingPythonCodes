@@ -1,6 +1,5 @@
 # Seq2Seq for Translation or Dialogue (2)
-
-![](https://img.shields.io/badge/python-3-brightgreen.svg) ![](https://img.shields.io/badge/tensorflow-1.0.0-yellowgreen.svg)
+![](https://img.shields.io/badge/Python-3.6.1-brightgreen.svg) ![](https://img.shields.io/badge/Tensorflow-1.0.0-yellowgreen.svg)
 
 Codes from [suriyadeepan/practical_seq2seq](https://github.com/suriyadeepan/practical_seq2seq).
 

@@ -1,4 +1,5 @@
 ## MNIST Dataset Training Examples
+![](https://img.shields.io/badge/Python-3.6.1-brightgreen.svg) ![](https://img.shields.io/badge/Tensorflow-1.0.0-yellowgreen.svg)
 
 1. Simple MNIST classification with logistic regression. It's a practice to learn the MNIST dataset and use a simple regressor to classify the dataset.
 2. MNIST Training, saving and loading model. It's a practice to learn how to save and load models trained by tensorflow. Reference: [10_save_restore_net.py](https://github.com/nlintz/TensorFlow-Tutorials/blob/master/10_save_restore_net.py).

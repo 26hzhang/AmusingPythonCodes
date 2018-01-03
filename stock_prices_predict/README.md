@@ -1,4 +1,6 @@
 ## Stock Prices Predict
+![](https://img.shields.io/badge/Python-3.6.1-brightgreen.svg) ![](https://img.shields.io/badge/Keras-2.0.6-yellowgreen.svg)
+
 It's a small dataset of stock prices in [Kaggle](https://www.kaggle.com/) · [New York Stock Exchange](https://www.kaggle.com/dgawlik/nyse). 
 
 Here are some useful references:

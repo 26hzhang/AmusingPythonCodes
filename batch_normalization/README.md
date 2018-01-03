@@ -1,4 +1,6 @@
 # Batch Normalization
+![](https://img.shields.io/badge/Python-3.6.1-brightgreen.svg) ![](https://img.shields.io/badge/Tensorflow-1.0.0-yellowgreen.svg)
+
 Implementation of Batch Normalization in Tensorflow, Batch Normalization is a strategy to address the problem of _internal covariate shift_, the description of _internal covariate shift_ is that for deep neural networks, the distribution of each layer’s inputs changes during training, as the parameters of the previous layers change, which slows down the training by requiring lower learning rates and careful parameter initialization, and makes it notoriously hard to train models with saturating nonlinearities.
 
 Batch Normalization draws its strength from making normalization a part of the model architecture and performing the normalization for each training mini-batch, which also allows to use much higher learning rates and be less careful about initialization, as well as acts as a regularizer, in some cases eliminating the need for Dropout.

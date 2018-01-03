@@ -1,4 +1,6 @@
 # Simple RBF Neural Networks for Two-class Classification Example
+![](https://img.shields.io/badge/Python-3.6.1-brightgreen.svg) ![](https://img.shields.io/badge/Tensorflow-1.0.0-yellowgreen.svg)
+
 It is a simple example of using RBF neural network to deal with two-class classification tasks. This task is implemented by [tensorflow](https://github.com/tensorflow/tensorflow). The directory contains four python files:
 - [kmeans.py](https://github.com/IsaacChanghau/AmusingPythonCodes/tree/master/rbf_networks_classification/kmeans.py), which is implemented to find the centre vectors of hidden neurons.
 - [rbf.py](https://github.com/IsaacChanghau/AmusingPythonCodes/tree/master/rbf_networks_classification/rbf.py) is the core model to achieve the RBF neural network.
