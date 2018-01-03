@@ -1,0 +1,2 @@
+model_checkpoint_path: "transe_model-500"
+all_model_checkpoint_paths: "transe_model-500"

@@ -17,5 +17,5 @@ Interesting python codes to deal with some simple and practical tasks.
 - [**Simple RBF Neural Networks for Two-class Classification Example**](/rbf_networks_classification)
 - [**Stanford CoreNLP Demo**](/stanford_corenlp_demo)
 - [**Stock Prices Predict**](/stock_prices_predict)
+- [**TransX · Embedding Entities and Relationships of Multi-relational Data**](/transx)
 - [**WeChat Exploration using itchat Package**](/wechat_exploration)
-
