@@ -66,3 +66,4 @@ Test accuracy 0.9592
 - [THE MNIST DATABASE of handwritten digits](http://yann.lecun.com/exdb/mnist/)
 - [julian121266/RecurrentHighwayNetworks](https://github.com/julian121266/RecurrentHighwayNetworks)
 - [Recurrent Highway Networks](https://arxiv.org/abs/1607.03474)
+- [NickShahML/tensorflow_with_latest_papers](https://github.com/NickShahML/tensorflow_with_latest_papers)
