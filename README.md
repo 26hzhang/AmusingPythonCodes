@@ -12,6 +12,7 @@ Interesting python codes to deal with some simple and practical tasks.
 - [**Highway Networks Example**](/highway_networks)
 - [**House Prices Predict**](/house_prices_predict)
 - [**MNIST Dataset Training Examples**](/mnist_training_examples)
+- [**SELUs - Visualized and Histogramed Comparisons among ReLU and Leaky ReLU**](/selu_activation_visualization)
 - [**Seq2Seq for Translation or Dialogue (1)**](/seq2seq_dialogue_1)
 - [**Seq2Seq for Translation or Dialogue (2)**](/seq2seq_dialogue_2)
 - [**Simple RBF Neural Networks for Two-class Classification Example**](/rbf_networks_classification)
