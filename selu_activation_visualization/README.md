@@ -27,8 +27,8 @@ The implemented model is trained and tested on three publicly available datasets
 
 ## Prerequisites
 
-- Python 2.7 or Python 3.3+
-- [Tensorflow 1.0.0](https://github.com/tensorflow/tensorflow/tree/r1.0)
+- Python 2.7
+- [Tensorflow 1.4.0](https://github.com/tensorflow/tensorflow/tree/r1.4)
 - [Tensorflow Plot](https://github.com/wookayin/tensorflow-plot)
 - [SciPy](http://www.scipy.org/install.html)
 - [NumPy](http://www.numpy.org/)
