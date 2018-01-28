@@ -68,12 +68,6 @@ I think we need some additional regularizations.
 - [Implementing Dynamic memory networks by YerevaNN][impl-dmn-yerevann] - Great article that helped me a lot
 - [Dynamic-memory-networks-in-Theano][dmn-in-theano]
 
-### To-do
-- More regularization and hyper-parameter tuning
-- Visual question answering
-- Attention visualization
-- Interactive mode?
-
 [paper]: https://arxiv.org/abs/1603.01417
 [babi]: https://research.facebook.com/research/babi/
 [img-url]: http://i.imgur.com/30DePKh.png
