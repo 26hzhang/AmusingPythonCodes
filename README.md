@@ -8,6 +8,7 @@ Interesting python codes to deal with some simple and practical tasks.
 - [**Batch Normalization Example**](/batch_normalization)
 - [**Build Recurrent Neural Networks from Scratch**](/rnn_from_scratch)
 - [**Douban · Wolf Warrior II Film Comments Analysis**](/wolf_warriors_ii)
+- [**Dynamic Memory Network**](/dmn)
 - [**Gated Orthogonal Recurrent Unit and Efficient Unitary Neural Network(EUNN)**](/gated_orthogonal_rnn_unit)
 - [**Generative Adversarial Networks Example**](/generative_adversarial_nets)
 - [**Highway Networks Example**](/highway_networks)
