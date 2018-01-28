@@ -2,6 +2,8 @@
 
 **Note**: some codes are modified to fit the requirements: ![](https://img.shields.io/badge/MacOS%20High%20Sierra-10.13.2-green.svg) with ![](https://img.shields.io/badge/Python-3.6-brightgreen.svg) and ![](https://img.shields.io/badge/TensorFlow-1.4.0-yellowgreen.svg).
 
+Original Repository: [therne/dmn-tensorflow](https://github.com/therne/dmn-tensorflow).
+
 ![DMN Structure][img-url]
 
 Implementation of [Dynamic Memory Networks for Visual and Textual Question Answering][paper] on the
