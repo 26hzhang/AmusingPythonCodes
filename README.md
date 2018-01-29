@@ -16,6 +16,7 @@ Interesting python codes to deal with some simple and practical tasks.
 - [**MNIST Dataset Training Examples**](/mnist_training_examples)
 - [**Residual Networks**](/resnet)
 - [**R-Net**](/rnet)
+- [**Self-normalizing networks (SNNs)**](/snns)
 - [**SELUs - Visualized and Histogramed Comparisons among ReLU and Leaky ReLU**](/selu_activation_visualization)
 - [**Seq2Seq for Translation or Dialogue (1)**](/seq2seq_dialogue_1)
 - [**Seq2Seq for Translation or Dialogue (2)**](/seq2seq_dialogue_2)
