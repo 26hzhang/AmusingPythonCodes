@@ -1,5 +1,5 @@
 # Generative Adversarial Nets Example
-![](https://img.shields.io/badge/Python-3.6.1-brightgreen.svg) ![](https://img.shields.io/badge/Tensorflow-1.0.0-yellowgreen.svg)
+![](https://img.shields.io/badge/Python-3.6.5-brightgreen.svg) ![](https://img.shields.io/badge/Tensorflow-1.8.0-yellowgreen.svg)
 
 The original codes are derived from [aymericdamien/TensorFlow-Examples](https://github.com/aymericdamien/TensorFlow-Examples), modifications and adjustments of the codes are made for easily understandable and more flexible.
 

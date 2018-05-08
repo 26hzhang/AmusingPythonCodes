@@ -1,5 +1,5 @@
 # Highway Networks
-![](https://img.shields.io/badge/Python-3.6.1-brightgreen.svg) ![](https://img.shields.io/badge/Tensorflow-1.0.0-yellowgreen.svg)
+![](https://img.shields.io/badge/Python-3.6.5-brightgreen.svg) ![](https://img.shields.io/badge/Tensorflow-1.8.0-yellowgreen.svg)
 
 Implementation of highway networks in Tensorflow, highway networks is a method to construct networks with very deep (hundreds+) layers. Although it performs well in practice, its principle is quite east to understand. 
 
