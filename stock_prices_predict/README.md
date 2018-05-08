@@ -3,6 +3,8 @@
 
 It's a small dataset of stock prices in [Kaggle](https://www.kaggle.com/) · [New York Stock Exchange](https://www.kaggle.com/dgawlik/nyse). 
 
+Dataset can be download from [[here]](https://www.kaggle.com/dgawlik/nyse).
+
 Here are some useful references:
 - [[Predict stock prices with LSTM]](https://www.kaggle.com/pablocastilla/predict-stock-prices-with-lstm)
 - [[LSTM_Stock_prediction-20170507]](https://www.kaggle.com/benjibb/lstm-stock-prediction-20170507)

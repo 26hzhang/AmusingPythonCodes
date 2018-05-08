@@ -5,6 +5,8 @@ This repository is converted from [thunlp/TensorFlow-TransX](https://github.com/
 
 This repository is just a practice codes after reading several KRL related papers to help understand the process better. For more details and information on this field, please refer: [Natural Language Processing Lab at Tsinghua University -- GitHub page](https://github.com/thunlp).
 
+Dataset can be download from [[here]](https://github.com/thunlp/TensorFlow-TransX/tree/master/data).
+
 In this repository, the codes structure is different from the original one, some modifications and adjustments are made to let the codes more understandable and easily to use.
 
 **TransH Training Example**:
