@@ -3,7 +3,7 @@ from __future__ import division
 from __future__ import print_function
 
 import numpy as np
-import argparse, os
+import argparse
 import tensorflow as tf
 
 from EUNN import EUNNCell
@@ -125,7 +125,7 @@ if __name__ == "__main__":
         'n_batch': dict['n_batch'],
         'n_hidden': dict['n_hidden'],
         'capacity': dict['capacity'],
-		'comp': dict['comp'],
+        'comp': dict['comp'],
         'fft': dict['fft'],
     }
     main(**kwargs)
