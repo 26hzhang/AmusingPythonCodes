@@ -100,8 +100,8 @@ with tf.Session(graph=graph) as sess:
                 print(log_str)
     final_embeddings = normalized_embeddings.eval()
 
-# Step 6: Visualize the embeddings.
+# Step 6: Visualize the embeddings.,
 plot_only = 500
 embeddings = final_embeddings[:plot_only, :]
 sample_labels = [reverse_dictionary[i] for i in range(plot_only)]
-tsne_and_plot(embeddings, sample_labels, filename='./data/tsne.png')
+tsne_and_plot(embeddings, sample_labels, filename='tsne.png')

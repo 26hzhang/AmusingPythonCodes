@@ -12,7 +12,10 @@ import random
 def maybe_download(filename, expected_bytes):
     """Download a file if not present, and make sure it's the right size."""
     url = 'http://mattmahoney.net/dc/text8.zip'
-    local_filename = os.path.join('./data', filename)
+    folder = "data/"
+    if not os.path.exists(folder):
+        os.makedirs(folder)
+    local_filename = os.path.join(folder, filename)
     if not os.path.exists(local_filename):
         print('Download text8.zip...')
         local_filename, _ = urllib.request.urlretrieve(url, local_filename)
