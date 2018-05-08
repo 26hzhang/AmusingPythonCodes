@@ -8,10 +8,11 @@ from cnn_model import batch_norm_cnn
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # suppress tensorflow warnings
 
 # load mnist dataset
-mnist = input_data.read_data_sets("./data/MNIST_data/", one_hot=True)
+os.makedirs("data/")
+mnist = input_data.read_data_sets("data/MNIST_data/", one_hot=True)
 
 TASK = 'train'
-checkpoint_path = './data/MNIST_data/mnist_cnn.ckpt'  # model save path
+checkpoint_path = 'data/MNIST_data/mnist_cnn.ckpt'  # model save path
 
 # set hyperparameters
 learning_rate = 0.01
@@ -57,7 +58,7 @@ with tf.Session() as sess:
         saver.restore(sess, checkpoint_path)  # restore variables
     if TASK == 'train':
         print('\n Training...')
-        for i in range(steps):
+        for i in range(1, steps + 1):
             batch_imgs, batch_labels = mnist.train.next_batch(batch_size)
             train_step.run({inputs: batch_imgs, labels: batch_labels, keep_prob: 0.5, phase_train: True})
             if i % validate_step == 0:

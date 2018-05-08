@@ -8,18 +8,19 @@ from cnn_model import batch_norm_cnn
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # suppress tensorflow warnings
 
 # define flags
-flags = tf.app.flags
+flags = tf.flags
 FLAGS = flags.FLAGS
 flags.DEFINE_string('task', 'train', '[train | test], default train')
 flags.DEFINE_boolean('restore', False, 'If true, restore the model from the latest checkpoint.')
 
 # load mnist dataset
-mnist = input_data.read_data_sets("./data/MNIST_data/", one_hot=True)
+os.makedirs("data/")
+mnist = input_data.read_data_sets("data/MNIST_data/", one_hot=True)
 
 # define artifact directories where results from the session can be saved
-model_path = os.environ.get('MODEL_PATH', './data/models/')
-checkpoint_path = os.environ.get('CHECKPOINT_PATH', './data/checkpoints/')
-summary_path = os.environ.get('SUMMARY_PATH', './data/logs/')
+model_path = os.environ.get('MODEL_PATH', 'data/models/')
+checkpoint_path = os.environ.get('CHECKPOINT_PATH', 'data/checkpoints/')
+summary_path = os.environ.get('SUMMARY_PATH', 'data/logs/')
 
 # set hyperparameters
 learning_rate = 0.01
@@ -38,33 +39,26 @@ with tf.Graph().as_default(), tf.Session() as sess:
 
     # build model
     cost, accuracy, predict = batch_norm_cnn(imgs, labels, keep_prob, phase_train)
-
     # add summaries
     merge_summaries = tf.summary.merge_all()
-
     # create trainer
     train_step = tf.train.AdagradOptimizer(learning_rate).minimize(cost)
-
     # create a saver instance to restore from the checkpoint
     saver = tf.train.Saver(max_to_keep=5)
-
     # initialize all variables
     sess.run(tf.global_variables_initializer())
-
     # save the graph definition as a protobuf file
     tf.train.write_graph(sess.graph, model_path, 'bn_cnn.pb', as_text=True)
-
     # restore, if possible
     if FLAGS.restore:
         latest_checkpoint_path = tf.train.latest_checkpoint(checkpoint_path)
         if latest_checkpoint_path:
             saver.restore(sess, latest_checkpoint_path)
-
     # training
     if FLAGS.task == 'train':
         summary_writer = tf.summary.FileWriter(summary_path, sess.graph)
         print('\n Training...')
-        for step in range(steps):
+        for step in range(1, steps + 1):
             batch_imgs, batch_labels = mnist.train.next_batch(batch_size)
             c, _ = sess.run([cost, train_step], feed_dict={inputs: batch_imgs, labels: batch_labels, keep_prob: 0.5,
                                                            phase_train: True})
@@ -77,7 +71,6 @@ with tf.Graph().as_default(), tf.Session() as sess:
                 saver.save(sess, checkpoint_path + 'checkpoint', global_step=step)
                 print('  step %5d: validation loss = %6.4f, validation accuracy = %6.4f' % (step, validate_loss,
                                                                                             validate_accuracy))
-
     # test model
     print('\n Testing...')
     test_loss, test_accuracy, test_prediction = sess.run([cost, accuracy, predict],
