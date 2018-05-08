@@ -1,6 +1,7 @@
 import numpy as np
 import tensorflow as tf
-from tensorflow.python.ops import seq2seq, rnn_cell
+from tensorflow.python.ops import rnn_cell
+from tensorflow.contrib.legacy_seq2seq.python.ops import seq2seq
 
 from models.base_model import BaseModel
 from models.old.episode_module import EpisodeModule

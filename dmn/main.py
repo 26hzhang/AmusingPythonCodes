@@ -4,7 +4,7 @@ import tensorflow as tf
 from read_data import read_babi, get_max_sizes
 from utils.data_utils import load_glove, WordTable
 
-flags = tf.app.flags
+flags = tf.flags
 
 # directories
 flags.DEFINE_string('model', 'dmn+', 'Model type - dmn+, dmn, dmn_embed [Default: DMN+]')

@@ -1,6 +1,8 @@
 # Dynamic Memory Networks in Tensorflow
 
-**Note**: some codes are modified to fit the requirements: ![](https://img.shields.io/badge/MacOS%20High%20Sierra-10.13.2-green.svg) with ![](https://img.shields.io/badge/Python-3.6-brightgreen.svg) and ![](https://img.shields.io/badge/TensorFlow-1.4.0-yellowgreen.svg).
+![](https://img.shields.io/badge/Python-3.6.5-brightgreen.svg) ![](https://img.shields.io/badge/TensorFlow-1.8.0-yellowgreen.svg)
+
+**Note**: some codes are modified to fit the requirements.
 
 Original Repository: [therne/dmn-tensorflow](https://github.com/therne/dmn-tensorflow).
 
