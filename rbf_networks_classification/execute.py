@@ -1,5 +1,5 @@
 # encoding: utf-8
-from rbf import RBFNet
+from .rbf import RBFNet
 import numpy as np
 import scipy.io as scio
 import warnings

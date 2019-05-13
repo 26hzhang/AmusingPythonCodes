@@ -1,7 +1,7 @@
-from resnet import *
+from .resnet import *
 from datetime import datetime
 import time
-from cifar10_input import *
+from .cifar10_input import *
 import pandas as pd
 
 

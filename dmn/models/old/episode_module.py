@@ -1,6 +1,6 @@
 import tensorflow as tf
 
-from utils.nn import weight, bias
+from ...utils.nn import weight, bias
 
 
 class EpisodeModule:

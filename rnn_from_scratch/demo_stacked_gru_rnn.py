@@ -1,6 +1,6 @@
-from rnn_units.stacked_gru_rnn import StackedGruRNN
-from data.paulg import datagen
-from data import data_utils
+from .rnn_units.stacked_gru_rnn import StackedGruRNN
+from .data.paulg import datagen
+from .data import data_utils
 import os
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # suppress tensorflow warnings

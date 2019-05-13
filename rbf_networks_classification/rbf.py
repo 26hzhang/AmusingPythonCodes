@@ -1,5 +1,5 @@
 # encoding: utf-8
-from kmeans import KMeans
+from .kmeans import KMeans
 import tensorflow as tf
 import numpy as np
 

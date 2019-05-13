@@ -1,4 +1,4 @@
-from model.gan_model import GAN
+from .model.gan_model import GAN
 from tensorflow.examples.tutorials.mnist import input_data
 import os
 

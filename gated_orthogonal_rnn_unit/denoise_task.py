@@ -6,8 +6,8 @@ import numpy as np
 import argparse
 import tensorflow as tf
 
-from EUNN import EUNNCell
-from GORU import GORUCell
+from .EUNN import EUNNCell
+from .GORU import GORUCell
 
 
 def noise_data(T, n_data, n_sequence):

@@ -3,8 +3,8 @@ import ujson as json
 import numpy as np
 from tqdm import tqdm
 import os
-from model import Model
-from util import get_record_parser, convert_tokens, evaluate, get_batch_dataset, get_dataset
+from .model import Model
+from .util import get_record_parser, convert_tokens, evaluate, get_batch_dataset, get_dataset
 
 
 def train(config):

@@ -1,14 +1,14 @@
-from datasets.cmudict import data
-import data_utils
+from .datasets.cmudict import data
+from .data_utils import rand_batch_gen, decode, split_dataset
 import importlib
-import seq2seq_wrapper
+from .seq2seq_wrapper import Seq2Seq
 import os
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # suppress tensorflow warnings
 
 # load data from pickle and npy files
 data_ctl, idx_words, idx_phonemes = data.load_data(PATH='datasets/cmudict/')
-(trainX, trainY), (testX, testY), (validX, validY) = data_utils.split_dataset(idx_phonemes, idx_words)
+(trainX, trainY), (testX, testY), (validX, validY) = split_dataset(idx_phonemes, idx_words)
 
 # parameters
 xseq_len = trainX.shape[-1]
@@ -18,13 +18,13 @@ xvocab_size = len(data_ctl['idx2pho'].keys())
 yvocab_size = len(data_ctl['idx2alpha'].keys())
 emb_dim = 128
 
-importlib.reload(seq2seq_wrapper)
+# importlib.reload(seq2seq_wrapper)
 
-model = seq2seq_wrapper.Seq2Seq(xseq_len=xseq_len, yseq_len=yseq_len, xvocab_size=xvocab_size, yvocab_size=yvocab_size,
-                                ckpt_path='ckpt/cmudict/', emb_dim=emb_dim, num_layers=3)
+model = Seq2Seq(xseq_len=xseq_len, yseq_len=yseq_len, xvocab_size=xvocab_size, yvocab_size=yvocab_size,
+                ckpt_path='ckpt/cmudict/', emb_dim=emb_dim, num_layers=3)
 
-val_batch_gen = data_utils.rand_batch_gen(validX, validY, 16)
-train_batch_gen = data_utils.rand_batch_gen(trainX, trainY, 128)
+val_batch_gen = rand_batch_gen(validX, validY, 16)
+train_batch_gen = rand_batch_gen(trainX, trainY, 128)
 
 model.train(train_batch_gen, val_batch_gen)
 
@@ -34,4 +34,4 @@ output = model.predict(sess, val_batch_gen.__next__()[0])
 print(output.shape)
 
 for oi in output:
-    print(data_utils.decode(sequence=oi, lookup=data_ctl['idx2alpha'], separator=''))
+    print(decode(sequence=oi, lookup=data_ctl['idx2alpha'], separator=''))

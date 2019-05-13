@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 import os
 import tensorflow as tf
-from read_data import read_babi, get_max_sizes
-from utils.data_utils import load_glove, WordTable
+from .read_data import read_babi, get_max_sizes
+from .utils.data_utils import load_glove, WordTable
 
 flags = tf.flags
 

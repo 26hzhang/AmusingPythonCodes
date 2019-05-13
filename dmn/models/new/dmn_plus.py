@@ -2,9 +2,9 @@ import numpy as np
 import tensorflow as tf
 from tensorflow.python.ops import rnn_cell
 
-from models.base_model import BaseModel
-from models.new.episode_module import EpisodeModule
-from utils.nn import weight, bias, dropout, batch_norm
+from ..base_model import BaseModel
+from .episode_module import EpisodeModule
+from ...utils.nn import weight, bias, dropout, batch_norm
 
 
 class DMN(BaseModel):

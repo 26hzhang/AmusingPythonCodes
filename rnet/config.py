@@ -1,8 +1,8 @@
 import os
 import tensorflow as tf
 
-from prepro import prepro
-from main import train, test
+from .prepro import prepro
+from .main import train, test
 
 flags = tf.flags
 

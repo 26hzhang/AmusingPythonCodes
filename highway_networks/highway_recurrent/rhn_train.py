@@ -13,8 +13,8 @@ import numpy as np
 import tensorflow as tf
 
 from sacred import Experiment
-from highway_recurrent.rhn import Model
-from highway_recurrent.data.reader import data_iterator
+from .rhn import Model
+from .data.reader import data_iterator
 
 ex = Experiment('rhn_prediction')
 logging = tf.logging

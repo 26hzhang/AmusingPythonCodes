@@ -1,6 +1,6 @@
 import tensorflow as tf
 from tensorflow.python.ops.nn import tanh
-from utils.nn import weight, bias, batch_norm
+from .nn import weight, bias, batch_norm
 
 
 class AttnGRU:

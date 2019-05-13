@@ -1,4 +1,4 @@
-from model.dcgan_model import DCGANBatchNorm
+from .model.dcgan_model import DCGANBatchNorm
 from tensorflow.examples.tutorials.mnist import input_data
 import os
 

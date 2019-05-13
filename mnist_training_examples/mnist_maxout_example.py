@@ -9,7 +9,7 @@ from __future__ import print_function
 import sys
 import tensorflow as tf
 from tensorflow.examples.tutorials.mnist import input_data
-from maxout import max_out
+from .maxout import max_out
 import warnings
 import os
 

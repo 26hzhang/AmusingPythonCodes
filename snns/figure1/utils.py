@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-'''
+"""
 Tensorflow Implementation of the Scaled ELU function and Dropout
-'''
+"""
 
 from __future__ import absolute_import, division, print_function
 import numbers

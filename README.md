@@ -1,6 +1,6 @@
 # Amusing Python Codes
 
-![Authour](https://img.shields.io/badge/Author-Zhang%20Hao%20(Isaac%20Changhau)-blue.svg)
+![Author](https://img.shields.io/badge/Author-Zhang%20Hao%20(Isaac%20Changhau)-blue.svg)
 
 Interesting python codes to deal with some simple and practical tasks.
 
@@ -25,3 +25,4 @@ Interesting python codes to deal with some simple and practical tasks.
 - [**Stock Prices Predict**](/stock_prices_predict)
 - [**TransX · Embedding Entities and Relationships of Multi-relational Data**](/transx)
 - [**WeChat Exploration using itchat Package**](/wechat_exploration)
+- [**Text Classification via Traditional Machine Learning Methods (sklearn-based)**](/text_classification_in_ml)

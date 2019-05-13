@@ -4,8 +4,8 @@ from __future__ import print_function
 import tensorflow as tf
 import tensorflow.contrib.slim as slim
 import tfplot
-from ops import conv2d, fc, selu, lrelu
-from util import log
+from .ops import conv2d, fc, selu, lrelu
+from .util import log
 import numpy as np
 
 

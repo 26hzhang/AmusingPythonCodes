@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
-from data_utils import normalize_data, load_data
-from model import lstm_rnn_model, denormalize, model_score
+from .data_utils import normalize_data, load_data
+from .model import lstm_rnn_model, denormalize, model_score
 import warnings
 import os
 

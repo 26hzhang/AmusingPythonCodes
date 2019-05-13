@@ -1,7 +1,7 @@
-from rnn_units.lstm_rnn import LstmRNN
-from data.paulg import datagen
+from .rnn_units.lstm_rnn import LstmRNN
+from .data.paulg import datagen
 import os
-from data import data_utils
+from .data import data_utils
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # suppress tensorflow warnings
 

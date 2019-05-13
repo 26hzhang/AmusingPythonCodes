@@ -4,11 +4,11 @@ from __future__ import print_function
 
 from six.moves import xrange
 
-from util import log
+from .util import log
 from pprint import pprint
 
-from model import Model
-from input_ops import create_input_ops
+from .model import Model
+from .input_ops import create_input_ops
 
 import os
 import time

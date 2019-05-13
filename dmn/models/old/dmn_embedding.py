@@ -3,9 +3,9 @@ import tensorflow as tf
 from tensorflow.python.ops import rnn_cell
 from tensorflow.contrib.legacy_seq2seq.python.ops import seq2seq
 
-from models.base_model import BaseModel
-from models.old.episode_module import EpisodeModule
-from utils.nn import weight, batch_norm, dropout
+from ..base_model import BaseModel
+from .episode_module import EpisodeModule
+from ...utils.nn import weight, batch_norm, dropout
 
 
 class DMN(BaseModel):

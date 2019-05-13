@@ -1,7 +1,7 @@
 import tensorflow as tf
 
-from utils.nn import weight, bias
-from utils.attn_gru import AttnGRU
+from ...utils.nn import weight, bias
+from ...utils.attn_gru import AttnGRU
 
 
 class EpisodeModule:

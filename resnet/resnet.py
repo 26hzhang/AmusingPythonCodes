@@ -1,5 +1,5 @@
 import numpy as np
-from hyper_parameters import *
+from .hyper_parameters import *
 
 BN_EPSILON = 0.001
 

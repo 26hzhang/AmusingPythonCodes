@@ -8,7 +8,7 @@ import scipy.io
 import scipy.ndimage as sn
 import h5py
 
-from util import log
+from ..util import log
 
 # __PATH__ = os.path.abspath(os.path.dirname(__file__))
 __PATH__ = './datasets/svhn'

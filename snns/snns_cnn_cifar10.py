@@ -8,7 +8,7 @@ from tensorflow.python.framework import ops
 from math import sqrt
 import numpy as np
 import matplotlib.pyplot as plt
-from cifar_data_prepro import get_data_set
+from .cifar_data_prepro import get_data_set
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # suppress tensorflow warnings
 

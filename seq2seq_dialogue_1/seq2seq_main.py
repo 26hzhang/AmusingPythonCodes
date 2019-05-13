@@ -12,8 +12,9 @@ import time
 import numpy as np
 import tensorflow as tf
 
-import data_utils
-import seq2seq_model
+from .data_utils import EOS_ID, initialize_vocabulary, prepare_custom_data, sentence_to_token_ids
+from .seq2seq_model import Seq2SeqModel
+
 '''
 try:
     from ConfigParser import SafeConfigParser
@@ -75,8 +76,9 @@ def read_data(source_path, target_path, max_size=None):
                     sys.stdout.flush()
                 source_ids = [int(x) for x in source.split()]
                 target_ids = [int(x) for x in target.split()]
-                target_ids.append(data_utils.EOS_ID)  # add end of sentence (EOS) token
-                # it means that if the source_ids' size large than source_size, this line will be dropped? similar for target_ids?
+                target_ids.append(EOS_ID)  # add end of sentence (EOS) token
+                # it means that if the source_ids' size large than source_size, this line will be dropped? similar for
+                # target_ids?
                 for bucket_id, (source_size, target_size) in enumerate(_buckets):
                     if len(source_ids) < source_size and len(target_ids) < target_size:
                         data_set[bucket_id].append([source_ids, target_ids])
@@ -87,10 +89,10 @@ def read_data(source_path, target_path, max_size=None):
 
 def create_model(session, forward_only):
     """Create model and initialize or load parameters"""
-    model = seq2seq_model.Seq2SeqModel(gConfig['enc_vocab_size'], gConfig['dec_vocab_size'], _buckets,
-                                       gConfig['layer_size'], gConfig['num_layers'], gConfig['max_gradient_norm'],
-                                       gConfig['batch_size'], gConfig['learning_rate'],
-                                       gConfig['learning_rate_decay_factor'], forward_only=forward_only)
+    model = Seq2SeqModel(gConfig['enc_vocab_size'], gConfig['dec_vocab_size'], _buckets,
+                         gConfig['layer_size'], gConfig['num_layers'], gConfig['max_gradient_norm'],
+                         gConfig['batch_size'], gConfig['learning_rate'],
+                         gConfig['learning_rate_decay_factor'], forward_only=forward_only)
 
     if 'pretrained_model' in gConfig:
         model.saver.restore(session, gConfig['pretrained_model'])  # if contains pretrained model, restore it
@@ -109,13 +111,13 @@ def create_model(session, forward_only):
 def train():
     # prepare dataset
     print("Preparing data in %s" % gConfig['working_directory'])
-    enc_train, dec_train, enc_dev, dec_dev, _, _ = data_utils.prepare_custom_data(gConfig['working_directory'],
-                                                                                  gConfig['train_enc'],
-                                                                                  gConfig['train_dec'],
-                                                                                  gConfig['test_enc'],
-                                                                                  gConfig['test_dec'],
-                                                                                  gConfig['enc_vocab_size'],
-                                                                                  gConfig['dec_vocab_size'])
+    enc_train, dec_train, enc_dev, dec_dev, _, _ = prepare_custom_data(gConfig['working_directory'],
+                                                                       gConfig['train_enc'],
+                                                                       gConfig['train_dec'],
+                                                                       gConfig['test_enc'],
+                                                                       gConfig['test_dec'],
+                                                                       gConfig['enc_vocab_size'],
+                                                                       gConfig['dec_vocab_size'])
     # setup config to use BFC allocator
     config = tf.ConfigProto()
     config.gpu_options.allocator_type = 'BFC'
@@ -196,8 +198,8 @@ def decode():
         enc_vocab_path = os.path.join(gConfig['working_directory'], "vocab%d.enc" % gConfig['enc_vocab_size'])
         dec_vocab_path = os.path.join(gConfig['working_directory'], "vocab%d.dec" % gConfig['dec_vocab_size'])
 
-        enc_vocab, _ = data_utils.initialize_vocabulary(enc_vocab_path)
-        _, rev_dec_vocab = data_utils.initialize_vocabulary(dec_vocab_path)
+        enc_vocab, _ = initialize_vocabulary(enc_vocab_path)
+        _, rev_dec_vocab = initialize_vocabulary(dec_vocab_path)
 
         # Decode from standard input.
         sys.stdout.write("> ")
@@ -205,7 +207,7 @@ def decode():
         sentence = sys.stdin.readline()
         while sentence:
             # Get token-ids for the input sentence.
-            token_ids = data_utils.sentence_to_token_ids(tf.compat.as_bytes(sentence), enc_vocab)
+            token_ids = sentence_to_token_ids(tf.compat.as_bytes(sentence), enc_vocab)
 
             # Which bucket does it belong to?
             bucket_id = min([b for b in range(len(_buckets)) if _buckets[b][0] > len(token_ids)])
@@ -220,8 +222,8 @@ def decode():
             outputs = [int(np.argmax(logit, axis=1)) for logit in output_logits]
 
             # If there is an EOS symbol in outputs, cut them at that point.
-            if data_utils.EOS_ID in outputs:
-                outputs = outputs[:outputs.index(data_utils.EOS_ID)]
+            if EOS_ID in outputs:
+                outputs = outputs[:outputs.index(EOS_ID)]
 
             # Print out French sentence corresponding to outputs.
             print(" ".join([tf.compat.as_str(rev_dec_vocab[output]) for output in outputs]))
@@ -235,7 +237,7 @@ def self_test():
     with tf.Session() as sess:
         print("Self-test for neural translation model.")
         # Create model with vocabularies of 10, 2 small buckets, 2 layers of 32.
-        model = seq2seq_model.Seq2SeqModel(10, 10, [(3, 3), (6, 6)], 32, 2, 5.0, 32, 0.3, 0.99, num_samples=8)
+        model = Seq2SeqModel(10, 10, [(3, 3), (6, 6)], 32, 2, 5.0, 32, 0.3, 0.99, num_samples=8)
         sess.run(tf.initialize_all_variables())
 
         # Fake data set for both the (3, 3) and (6, 6) bucket.
@@ -260,15 +262,15 @@ def init_session(sess, conf='seq2seq.ini'):
     enc_vocab_path = os.path.join(gConfig['working_directory'], "vocab%d.enc" % gConfig['enc_vocab_size'])
     dec_vocab_path = os.path.join(gConfig['working_directory'], "vocab%d.dec" % gConfig['dec_vocab_size'])
 
-    enc_vocab, _ = data_utils.initialize_vocabulary(enc_vocab_path)
-    _, rev_dec_vocab = data_utils.initialize_vocabulary(dec_vocab_path)
+    enc_vocab, _ = initialize_vocabulary(enc_vocab_path)
+    _, rev_dec_vocab = initialize_vocabulary(dec_vocab_path)
 
     return sess, model, enc_vocab, rev_dec_vocab
 
 
 def decode_line(sess, model, enc_vocab, rev_dec_vocab, sentence):
     # Get token-ids for the input sentence.
-    token_ids = data_utils.sentence_to_token_ids(tf.compat.as_bytes(sentence), enc_vocab)
+    token_ids = sentence_to_token_ids(tf.compat.as_bytes(sentence), enc_vocab)
 
     # Which bucket does it belong to?
     bucket_id = min([b for b in range(len(_buckets)) if _buckets[b][0] > len(token_ids)])
@@ -283,8 +285,8 @@ def decode_line(sess, model, enc_vocab, rev_dec_vocab, sentence):
     outputs = [int(np.argmax(logit, axis=1)) for logit in output_logits]
 
     # If there is an EOS symbol in outputs, cut them at that point.
-    if data_utils.EOS_ID in outputs:
-        outputs = outputs[:outputs.index(data_utils.EOS_ID)]
+    if EOS_ID in outputs:
+        outputs = outputs[:outputs.index(EOS_ID)]
 
     return " ".join([tf.compat.as_str(rev_dec_vocab[output]) for output in outputs])
 
@@ -303,4 +305,3 @@ if __name__ == '__main__':
         decode()
     else:
         print('Nothing to do....')
-

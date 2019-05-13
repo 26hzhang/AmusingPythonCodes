@@ -1,5 +1,5 @@
 import tensorflow as tf
-from func import CudnnGRU, NativeGRU, dot_attention, summ, dropout, PointerNet
+from .func import CudnnGRU, NativeGRU, dot_attention, summ, dropout, PointerNet
 
 
 class Model(object):

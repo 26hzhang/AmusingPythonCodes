@@ -1,6 +1,6 @@
 import numpy as np
 import tensorflow as tf
-from util import log
+from .util import log
 
 
 def check_data_id(dataset, data_id):
