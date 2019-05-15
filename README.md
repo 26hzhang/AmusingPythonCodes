@@ -29,3 +29,4 @@ Interesting python codes to deal with some simple and practical tasks.
 - [**CIFAR and MNIST classification**](/CifarMnistClassification)
 - [**Punctuation Restoration (tensorflow-based)**](/Punctuators)
 - [**Bidirectional Attention Flow for Machine Comprehension**](/bi-att-flow-dev)
+- [**Sequence to Sequence Labeler**](/Seq2SeqLabeling)
