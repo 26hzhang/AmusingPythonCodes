@@ -26,3 +26,4 @@ Interesting python codes to deal with some simple and practical tasks.
 - [**Text Classification via Traditional Machine Learning Methods (sklearn-based)**](/text_classification_in_ml)
 - [**Context-Dependent Sentiment Analysis in User-Generated Videos**](/multimodal-fusion)
 - [**Deep Fashion Net (keras-based)**](/fasionnet-multi-classification)
+- [**CIFAR and MNIST classification**](/CifarMnistClassification)
