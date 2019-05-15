@@ -1,7 +1,7 @@
 from numpy import nan
 import codecs
 import math
-from data.data import PUNCTUATION_VOCABULARY, PUNCTUATION_MAPPING, SPACE
+from ..data.data import PUNCTUATION_VOCABULARY, PUNCTUATION_MAPPING, SPACE
 
 
 def compute_error(target_path, predicted_path):

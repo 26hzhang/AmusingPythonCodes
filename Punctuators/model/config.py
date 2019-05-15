@@ -1,6 +1,6 @@
-from data.data import WORD_VOCAB_FILE, PUNCTUATION_VOCABULARY, CHAR_VOCAB_FILE
-from data.data import read_vocabulary, iterable_to_dict
-from utils.data_utils import load_embeddings
+from ..data.data import WORD_VOCAB_FILE, PUNCTUATION_VOCABULARY, CHAR_VOCAB_FILE
+from ..data.data import read_vocabulary, iterable_to_dict
+from ..utils.data_utils import load_embeddings
 import os
 
 

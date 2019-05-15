@@ -1,7 +1,7 @@
-from model.model import Punctuator
-from data.data import TRAIN_FILE
-from data.data import load
-from model.config import Config
+from .model.model import Punctuator
+from .data.data import TRAIN_FILE
+from .data.data import load
+from .model.config import Config
 import os
 
 

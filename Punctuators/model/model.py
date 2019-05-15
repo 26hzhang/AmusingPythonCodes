@@ -4,13 +4,13 @@ import codecs
 import numpy as np
 from numpy import nan
 from tqdm import tqdm
-from utils.data_utils import batch_iter, pad_sequences
+from ..utils.data_utils import batch_iter, pad_sequences
 from tensorflow.python.ops.rnn import dynamic_rnn
-from model.nns import viterbi_decode, dense, highway_network
-from model.rnns import BiRNN, DenseConnectBiRNN, AttentionCell
-from utils.error_calculator import compute_error
-from utils.logger import get_logger, Progbar
-from data.data import PUNCTUATION_MAPPING, END, UNK, EOS_TOKENS, SPACE
+from .nns import viterbi_decode, dense, highway_network
+from .rnns import BiRNN, DenseConnectBiRNN, AttentionCell
+from ..utils.error_calculator import compute_error
+from ..utils.logger import get_logger, Progbar
+from ..data.data import PUNCTUATION_MAPPING, END, UNK, EOS_TOKENS, SPACE
 
 
 class Punctuator(object):

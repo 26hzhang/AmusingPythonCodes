@@ -1,7 +1,7 @@
 import tensorflow as tf
 from tensorflow.python.ops.rnn_cell import LSTMCell, GRUCell, RNNCell
 from tensorflow.python.ops.rnn import bidirectional_dynamic_rnn
-from model.nns import flatten, reconstruct, dense
+from .nns import flatten, reconstruct, dense
 
 
 class BiRNN:  # used as encoding or char representation

@@ -1,5 +1,5 @@
-from model.model import Punctuator
-from model.config import Config
+from .model.model import Punctuator
+from .model.config import Config
 import os
 
 
