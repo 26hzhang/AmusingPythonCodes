@@ -28,3 +28,4 @@ Interesting python codes to deal with some simple and practical tasks.
 - [**Deep Fashion Net (keras-based)**](/fasionnet-multi-classification)
 - [**CIFAR and MNIST classification**](/CifarMnistClassification)
 - [**Punctuation Restoration (tensorflow-based)**](/Punctuators)
+- [**Bidirectional Attention Flow for Machine Comprehension**](/bi-att-flow-dev)
