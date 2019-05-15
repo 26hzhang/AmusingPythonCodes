@@ -1,0 +1,9 @@
+train.tags.en-fr.en as train dataset
+
+IWSLT12.TALK.dev2010.en-fr.en.xml and IWSLT12.TALK.tst2010.en-fr.en.xml as development dataset
+
+IWSLT12.TED.MT.tst2011.en-fr.en.xml and IWSLT12.TED.MT.tst2012.en-fr.en.xml as test dataset
+
+
+Train and Dev datasets: https://wit3.fbk.eu/mt.php?release=2012-03
+Test dataset: https://wit3.fbk.eu/mt.php?release=2012-03-test
